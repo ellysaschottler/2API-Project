@@ -1,8 +1,8 @@
 //API 1 https://openweathermap.org/api 
-//API 2 https://developer.musixmatch.com/
+//API 2 https://www.last.fm/api
 
-var APIKey2 = "1fa617f326e19f07e8f269c74152f2b1"
 
+//Weather API Section
 var cityName = "Rochester"
 var APIKey = "af36b85d3236ca25f03ced5a81cc6ee6";
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
@@ -23,22 +23,25 @@ console.log("unix-date"+data.dt)
 console.log("lat" +data.coord.lat)
 console.log("lon" + data.coord.lon)
 })
-var APIKey2 = "1fa617f326e19f07e8f269c74152f2b1"
-var queryURL2 = "https://api.musixmatch.com/ws/1.1/" + "track.get?apikey=" + APIKey2
 
+//Music API Section
 
-fetch(queryURL2)
+var methodChoice = "geo.gettopartists"
+var countryChoice = "spain"
+var queryModifier = methodChoice + "&country="+ countryChoice
+
+var APIKey2 = "7900466c10eb22d039833bef2573b531"
+var queryURL2 = "http://ws.audioscrobbler.com/2.0/?method=" + queryModifier + "&api_key=" + APIKey2 + "&format=json"
+
+fetch(queryURL2, {
+    method: "GET",
+    headers: {'User-Agent': 'Weather DJW'}
+})
 .then (function(response){
 
 return response.json();
 })
 .then(function(data){
-    // getMusic(data)
-    console.log(data)
-
+    
+console.log(data) 
 })
-
-
-
-
-
