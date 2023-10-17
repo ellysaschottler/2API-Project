@@ -16,9 +16,9 @@ return response.json();
 .then(function(data){
     // getWeather(data)
 console.log(data) // gets whole data
-console.log("weather-icon-code" +data.weather[0].icon)
-console.log("speed" +data.wind.speed)
-console.log("humidity"+data.main.humidity)
+console.log("weather-icon-code" + data.weather[0].icon)
+console.log("speed" + data.wind.speed)
+console.log("humidity"+ data.main.humidity)
 console.log("temp" + data.main.temp)
 
 })
@@ -46,11 +46,17 @@ console.log(data.results.trackmatches.track)
 console.log(data.results.trackmatches.track[0].name)
 console.log(data.results.trackmatches.track[0].url)
 })
-const submitBtn = document.querySelector("#btn")
-submitBtn.addEventListener("click")
 var weatherTerms = ["Rain", "Wind","Hot","Pressure","Cloud"]
 // Function SaveFavorite = save + display on click event
 // Function SelectWeather = choose weather term from weather data, use if conditions to choose specific weather terms
 // Function randomWeatherSong = use randomizer to select track index #
 // Function DisplayWeather = use openweather assignment code
-// 
+const submitBtn = document.querySelector("#btn");
+submitBtn.addEventListener("click", handleUserInput); 
+function handleUserInput() {
+    const cityName = document.querySelector("#cityName").value;
+    const weatherTerm = document.querySelector("#weatherTerm").value;
+  
+    getWeather(cityName);
+    getMusic(weatherTerm);
+  }
