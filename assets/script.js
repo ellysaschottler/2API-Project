@@ -6,7 +6,7 @@
 
 var cityName = "Rochester" // need to make the cityName respond to user input
 var APIKey = "af36b85d3236ca25f03ced5a81cc6ee6";
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
 
 fetch(queryURL)
 .then (function(response){
@@ -14,13 +14,11 @@ fetch(queryURL)
 return response.json();
 })
 .then(function(data){
-    // getWeather(data)
 console.log(data) // gets whole data
 console.log("weather-icon-code" + data.weather[0].icon)
 console.log("speed" + data.wind.speed)
 console.log("humidity"+ data.main.humidity)
 console.log("temp" + data.main.temp)
-
 })
 
 //Music API Section
