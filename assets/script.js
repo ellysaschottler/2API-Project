@@ -42,7 +42,15 @@ return response.json();
 })
 .then(function(data){
     
-console.log(data.results.trackmatches.track[0]) 
+console.log(data.results.trackmatches.track) 
 console.log(data.results.trackmatches.track[0].name)
 console.log(data.results.trackmatches.track[0].url)
 })
+const submitBtn = document.querySelector("#btn")
+submitBtn.addEventListener("click")
+var weatherTerms = ["Rain", "Wind","Hot","Pressure","Cloud"]
+// Function SaveFavorite = save + display on click event
+// Function SelectWeather = choose weather term from weather data, use if conditions to choose specific weather terms
+// Function randomWeatherSong = use randomizer to select track index #
+// Function DisplayWeather = use openweather assignment code
+// 
