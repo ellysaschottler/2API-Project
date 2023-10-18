@@ -143,6 +143,7 @@ cityNameForm.addEventListener("submit", function (e){
     cityInput.value = ""
     weatherContainerEl.innerHTML="" // clears out previous weather if new search is made
     cityNameDispayEl.innerHTML="" // clears out previous city if new city is searched
+    weatherTermArray= [] // clears the weather array for the new search
     getCurrentWeather()
 })
 
