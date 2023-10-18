@@ -27,7 +27,7 @@ function getCurrentWeather (){
         
         var weatherForecastListEl = document.createElement("ul")
         var dateEl = document.createElement("li");
-        dateEl.textContent = dayjs.unix(data.dt).format("MM/DD/YYYY")
+        dateEl.textContent = "Today's Weather:"
         var iconListEl = document.createElement("li")
         var iconEl = document.createElement("img");
         iconEl.src = "http://openweathermap.org/img/w/"+data.weather[0].icon+".png"
@@ -39,8 +39,9 @@ function getCurrentWeather (){
         var humidityEl = document.createElement("li")
         humidityEl.textContent = "Humidity: "+data.main.humidity + "%"
         var weatherDescriptionEl = document.createElement("li")
-        weatherDescriptionEl.textContent = "description:" +data.weather[0].main
+        weatherDescriptionEl.textContent = "Description: " +data.weather[0].main
         
+        //Displays the Weather data
         cityNameDispayEl.appendChild(cityNameDataEl)
         weatherForecastListEl.appendChild(dateEl)
         weatherForecastListEl.appendChild(iconListEl)
@@ -49,8 +50,26 @@ function getCurrentWeather (){
         weatherForecastListEl.appendChild(humidityEl)
         weatherForecastListEl.appendChild(weatherDescriptionEl)
         weatherContainerEl.appendChild(weatherForecastListEl)
+        
+        // Populates the weatherTermArray
+        var temp=data.main.temp
+        var windSpeed = data.wind.speed
+        var description = data.weather[0].main
+        if (description == "Clouds"){
+            weatherTermArray.push("cloud")
+        }else
+        {weatherTermArray.push(data.weather[0].main)
+        }
+        if (temp >80){
+        weatherTermArray.push("hot")}
+        if (temp <20){
+        weatherTermArray.push("cold")}
+        if (windSpeed >20){
+        weatherTermArray.push("wind")}
+        console.log(weatherTermArray)
 
-        getMusicData() // getMusicData() not yet written
+
+        //getMusicData() // getMusicData() not yet written
     })
 }
 //Music API Section
@@ -78,7 +97,7 @@ fetch(queryURL2, {
         console.log(data.results.trackmatches.track[0].url)
     })
 var weatherTerms = ["Rain", "Wind", "Hot", "Pressure", "Cloud"]
-
+var weatherTermArray = [] // to replace var weatherTerms
 
 // Function SaveFavorite = save + display on click event
 // Function SelectWeather = choose weather term from weather data, use if conditions to choose specific weather terms
