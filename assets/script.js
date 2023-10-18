@@ -6,6 +6,7 @@ var weatherContainerEl = document.querySelector("#weather")
 var songContainerEl = document.querySelector("#song")
 var saveButtonEl = document.querySelector("#save-btn")
 var cityNameDispayEl = document.querySelector("#city-name-display") //need to add this ID to html above weather
+var cityInput = document.querySelector("#city")
 
 //Weather API Section
 
@@ -113,11 +114,11 @@ function saveUserInput(){
   // City Name input set as cityName variable and empty the input after entry
 cityNameForm.addEventListener("submit", function (e){
     e.preventDefault()
-    if (cityNameInput.value == ""){
+    if (cityInput.value == ""){
         return
     }
-    cityName = cityNameInput.value  
-    cityNameInput.value = ""
+    cityName = cityInput.value  
+    cityInput.value = ""
     getCurrentWeather()
 })
 
