@@ -10,7 +10,7 @@ var cityInput = document.querySelector("#city")
 
 //Weather API Section
 
-var cityName = "Rochester" // need to make the cityName respond to user input
+var cityName 
 var APIKey = "af36b85d3236ca25f03ced5a81cc6ee6";
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
 
@@ -22,6 +22,7 @@ function getCurrentWeather (){
         return response.json();
     })
     .then(function(data){
+        
         var cityNameDataEl = document.createElement("h2")
         cityNameDataEl.textContent = data.name
         
@@ -67,6 +68,7 @@ function getCurrentWeather (){
         if (windSpeed >20){
         weatherTermArray.push("wind")}
         console.log(weatherTermArray)
+        console.log(data)
 
 
         //getMusicData() // getMusicData() not yet written
@@ -136,8 +138,11 @@ cityNameForm.addEventListener("submit", function (e){
     if (cityInput.value == ""){
         return
     }
+
     cityName = cityInput.value  
     cityInput.value = ""
+    weatherContainerEl.innerHTML="" // clears out previous weather if new search is made
+    cityNameDispayEl.innerHTML="" // clears out previous city if new city is searched
     getCurrentWeather()
 })
 
