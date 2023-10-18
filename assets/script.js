@@ -1,6 +1,11 @@
 //API 1 https://openweathermap.org/api 
 //API 2 https://www.last.fm/api
 
+var cityNameInput = document.querySelector("#city-name")
+var weatherContainerEl = document.querySelector("#weather")
+var songContainerEl = document.querySelector("#song")
+var saveButtonEl = document.querySelector("#save-btn")
+var favoriteSongContainerEl = document.querySelector("#save-data")
 
 //Weather API Section
 
