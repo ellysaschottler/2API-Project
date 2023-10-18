@@ -5,7 +5,6 @@ var cityNameForm = document.querySelector("#city-name")
 var weatherContainerEl = document.querySelector("#weather")
 var songContainerEl = document.querySelector("#song")
 var saveButtonEl = document.querySelector("#save-btn")
-var favoriteSongContainerEl = document.querySelector("#save-data")
 var cityNameDispayEl = document.querySelector("#city-name-display") //need to add this ID to html above weather
 
 //Weather API Section
@@ -85,31 +84,30 @@ var weatherTerms = ["Rain", "Wind", "Hot", "Pressure", "Cloud"]
 // Function randomWeatherSong = use randomizer to select track index #
 // Function DisplayWeather = use openweather assignment code
 
-const submitBtn = document.querySelector("#btn");
-submitBtn.addEventListener("click", handleUserInput);
-function handleUserInput() {
-    const cityName = document.querySelector("#cityName").value;
-    const weatherTerm = document.querySelector("#weatherTerm").value;
+// const submitBtn = document.querySelector("#btn");
+// submitBtn.addEventListener("click", handleUserInput);
+// function handleUserInput() {
+//     const cityName = document.querySelector("#cityName").value;
+//     const weatherTerm = document.querySelector("#weatherTerm").value;
 
 
 
-    //getMusic(weatherTerm);
-}
+//     //getMusic(weatherTerm);
+// }
 const userSongs = [];
 const saveBtn = document.querySelector("#save-btn");
 saveBtn.addEventListener("click", saveUserInput);
 function saveUserInput(){
     
-    const faveSong = document.querySelector("#faveSong").value;
+    // const faveSong = document.querySelector("#save-data").value;
 
 
 }
 // define getMusic function + use save button to save favorite song in local storage + display saved song + make getMusic function, save locally + globally
 
   
-    getWeather(cityName);
-    getMusic(weatherTerm);
-  }
+    // getWeather(cityName);
+    // getMusic(weatherTerm);
 
 
   // City Name input set as cityName variable and empty the input after entry
@@ -122,3 +120,4 @@ cityNameForm.addEventListener("submit", function (e){
     cityNameInput.value = ""
     getCurrentWeather()
 })
+
