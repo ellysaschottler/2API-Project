@@ -1,28 +1,58 @@
 //API 1 https://openweathermap.org/api 
 //API 2 https://www.last.fm/api
 
+var cityNameForm = document.querySelector("#city-name")
+var weatherContainerEl = document.querySelector("#weather")
+var songContainerEl = document.querySelector("#song")
+var saveButtonEl = document.querySelector("#save-btn")
+var favoriteSongContainerEl = document.querySelector("#save-data")
+var cityNameDispayEl = document.querySelector("#city-name-display") //need to add this ID to html above weather
 
 //Weather API Section
 
 var cityName = "Rochester" // need to make the cityName respond to user input
 var APIKey = "af36b85d3236ca25f03ced5a81cc6ee6";
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
 
-fetch(queryURL)
-    .then(function (response) {
 
+function getCurrentWeather (){
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
+
+    fetch(queryURL).then (function(response){
         return response.json();
     })
-    .then(function (data) {
-        // getWeather(data)
-        console.log(data) // gets whole data
-        console.log("weather-icon-code" + data.weather[0].icon)
-        console.log("speed" + data.wind.speed)
-        console.log("humidity" + data.main.humidity)
-        console.log("temp" + data.main.temp)
+    .then(function(data){
+        var cityNameDataEl = document.createElement("h2")
+        cityNameDataEl.textContent = data.name
+        
+        var weatherForecastListEl = document.createElement("ul")
+        var dateEl = document.createElement("li");
+        dateEl.textContent = dayjs.unix(data.dt).format("MM/DD/YYYY")
+        var iconListEl = document.createElement("li")
+        var iconEl = document.createElement("img");
+        iconEl.src = "http://openweathermap.org/img/w/"+data.weather[0].icon+".png"
+        iconListEl.appendChild(iconEl)
+        var tempEl = document.createElement("li")
+        tempEl.textContent = "Temp: " +data.main.temp +"°F"
+        var windEl = document.createElement("li")
+        windEl.textContent = "Wind: "+ data.wind.speed +" MPH"
+        var humidityEl = document.createElement("li")
+        humidityEl.textContent = "Humidity: "+data.main.humidity + "%"
+        var weatherDescriptionEl = document.createElement("li")
+        weatherDescriptionEl.textContent = "description:" +data.weather[0].main
+        
+        cityNameDispayEl.appendChild(cityNameDataEl)
+        weatherForecastListEl.appendChild(dateEl)
+        weatherForecastListEl.appendChild(iconListEl)
+        weatherForecastListEl.appendChild(tempEl)
+        weatherForecastListEl.appendChild(windEl)
+        weatherForecastListEl.appendChild(humidityEl)
+        weatherForecastListEl.appendChild(weatherDescriptionEl)
+        weatherContainerEl.appendChild(weatherForecastListEl)
 
+        getMusicData() // getMusicData() not yet written
     })
-
+}
 //Music API Section
 var weatherTerm = "rain" // weather term to be updated depending on the day's weather
 var methodChoice = "track.search"
@@ -38,6 +68,7 @@ fetch(queryURL2, {
 })
     .then(function (response) {
 
+
         return response.json();
     })
     .then(function (data) {
@@ -47,17 +78,21 @@ fetch(queryURL2, {
         console.log(data.results.trackmatches.track[0].url)
     })
 var weatherTerms = ["Rain", "Wind", "Hot", "Pressure", "Cloud"]
+
+
 // Function SaveFavorite = save + display on click event
 // Function SelectWeather = choose weather term from weather data, use if conditions to choose specific weather terms
 // Function randomWeatherSong = use randomizer to select track index #
 // Function DisplayWeather = use openweather assignment code
+
 const submitBtn = document.querySelector("#btn");
 submitBtn.addEventListener("click", handleUserInput);
 function handleUserInput() {
     const cityName = document.querySelector("#cityName").value;
     const weatherTerm = document.querySelector("#weatherTerm").value;
 
-    //getWeather(cityName);
+
+
     //getMusic(weatherTerm);
 }
 const userSongs = [];
@@ -70,3 +105,20 @@ function saveUserInput(){
 
 }
 // define getMusic function + use save button to save favorite song in local storage + display saved song + make getMusic function, save locally + globally
+
+  
+    getWeather(cityName);
+    getMusic(weatherTerm);
+  }
+
+
+  // City Name input set as cityName variable and empty the input after entry
+cityNameForm.addEventListener("submit", function (e){
+    e.preventDefault()
+    if (cityNameInput.value == ""){
+        return
+    }
+    cityName = cityNameInput.value  
+    cityNameInput.value = ""
+    getCurrentWeather()
+})
