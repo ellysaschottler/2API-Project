@@ -129,7 +129,16 @@ function saveUserInput(){
 
   
     // getWeather(cityName);
-    // getMusic(weatherTerm);
+//function to retrieve the API
+function getMusic(weatherterm) {
+    var APIKey2 = "7900466c10eb22d039833bef2573b531"
+    fetch(`https://ws.audioscrobbler.com/2.0/?method=track.search&track=${weatherterm}&api_key=${APIKey2}&format=json`).then(response=>{
+        console.log(response["trackmatches"]["track"][0]);
+        //var randomnumber = Math.floor(Math.random()*100)%response.length;
+        //console.log(response[randomnumber])
+        
+    })
+}
 
 
   // City Name input set as cityName variable and empty the input after entry
