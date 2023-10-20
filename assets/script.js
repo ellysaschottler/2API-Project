@@ -12,9 +12,8 @@ var cityInput = document.querySelector("#city")
 
 var cityName = "Rochester" // need to make the cityName respond to user input
 var APIKey = "af36b85d3236ca25f03ced5a81cc6ee6";
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
 
-
+// Pulls weather data and displays it and populates the weatherTermArray
 function getCurrentWeather() {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
 
@@ -71,9 +70,6 @@ function getCurrentWeather() {
             }
             console.log(weatherTermArray)
             fetchMusicDataForRandom(weatherTermArray)
-
-
-            //getMusicData() // getMusicData() not yet written
         })
 }
 //Music API Section
@@ -144,6 +140,9 @@ cityNameForm.addEventListener("submit", function (e) {
     }
     cityName = cityInput.value
     cityInput.value = ""
+    weatherContainerEl.innerHTML="" // clears out previous weather if new search is made
+    cityNameDispayEl.innerHTML="" // clears out previous city if new city is searched
+    weatherTermArray= [] // clears the weather array for the new search
     getCurrentWeather()
 })
 function getRandomTrack(tracks) {
