@@ -2,49 +2,65 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weathermen Music Application</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./assets/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weathermen Music Application</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
 <body>
-    <div>
-        <form id="city-name">
-            <input id="city" type="text" placeholder="Minneapolis"></input>
-            <button id="city-btn">Current Zip location</button>
-        </form>
-    </div>
-
-    <div id="city-name-display"></div>
-
-
-    <div id="weather"></div>
-    <div id="song">
-        <div class="row">
-            <div class="col s12 m6">
-              <div class="card blue-grey darken-1">
-                <div class="card-content white-text">
-                  <span class="card-title">Card Title</span>
-                  <p>I am a very simple card. I am good at containing small bits of information.
-                  I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
-                  <a href="#">This is a link</a>
-                </div>
-              </div>
+  <div>
+    <form id="city-name">
+      <!-- <input id="city" type="text" placeholder="City Name"></input> -->
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="ex. Minneapolis" id="city" type="text">
+              <label for="city">Enter City Name</label>
             </div>
           </div>
-        <!-- <a id="save-btn" class="waves-effect waves-light btn"><i class="material-icons left">cl0oud</i>button</a> -->
-        <a id="save-btn" class="waves-effect waves-light btn">Save Fav Song</a>
+      </div>
+      <button id="city-btn" class="green darken-4 waves-light btn">Submit City</a>
+        <!-- <button id="city-btn">Search</button> -->
+    </form>
+  </div>
+
+
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card grey darken-1">
+        <div class="card-content white-text">
+          <span id="city-name-display" class="card-title">Local Weather</span>
+          <p id="weather">Enter your location in the input field above to see current weather data!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Recommended Song</span>
+          <p id="song">When your location is shared, this card will populate with a song recommendation to fit your
+            area's current weather! How neat!</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <a id="save-btn" class="waves-effect waves-light btn"><i class="material-icons left">cl0oud</i>button</a> -->
+  <button id="save-btn" class="green darken-4 waves-effect waves-light btn">Save Song</a>
     </div>
     <div id="save-data">Favorite Song List</div>
 
     <script src="./assets/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js" integrity="sha512-FwNWaxyfy2XlEINoSnZh1JQ5TRRtGow0D6XcmAWmYCRgvqOUTnzCxPc9uF35u5ZEpirk1uhlPVA19tflhvnW1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
-  </body>
+</body>
 
 </html>
