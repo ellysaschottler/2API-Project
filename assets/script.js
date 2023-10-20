@@ -194,8 +194,8 @@ function fetchMusicDataForRandom(weatherTermArray) {
     function displayRandomTrack(trackName, trackURL) {
         var trackNameEl = document.createElement("p");
         var trackLink = document.createElement("a");
-
-        trackLink.textContent = "Now Playing: " + trackName;
+        trackNameEl.textContent = "Now Playing: "
+        trackLink.textContent = trackName;
         trackLink.href = trackURL;
         trackLink.target = "_blank"
 
