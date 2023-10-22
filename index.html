@@ -14,19 +14,17 @@
     <form id="city-name">
       <!-- <input id="city" type="text" placeholder="City Name"></input> -->
       <div class="row">
-        <form class="col s12">
-          <div class="row">
+        <!-- removed nested form tag and duplicate row tag -->
             <div class="input-field col s6">
               <input placeholder="ex. Minneapolis" id="city" type="text">
               <label for="city">Enter City Name</label>
             </div>
-          </div>
       </div>
-      <button id="city-btn" class="green darken-4 waves-light btn">Submit City</a>
+      <button id="city-btn" class="green darken-4 waves-light btn">Submit City</button>
+      <!-- fixed end tag to button -->
         <!-- <button id="city-btn">Search</button> -->
     </form>
   </div>
-
 
   <div class="row">
     <div class="col s12 m6">
@@ -38,7 +36,7 @@
       </div>
     </div>
   </div>
-  </div>
+  
   <div class="row">
     <div class="col s12 m6">
       <div class="card grey darken-1">
@@ -48,15 +46,19 @@
             area's current weather! Click the 'Now Playing' link to be brought to last.fm! How neat!</p>
         </div>
         <div class="card-action">
-          <a href="#" id="song"></a>
+          <div id="song"></div>
+          <!-- changed to div tag instead of a tag -->
         </div>
       </div>
     </div>
   </div>
   <!-- <a id="save-btn" class="waves-effect waves-light btn"><i class="material-icons left">cl0oud</i>button</a> -->
-  <button id="save-btn" class="green darken-4 waves-effect waves-light btn">Save Song</a>
+  <button id="save-btn" class="green darken-4 waves-effect waves-light btn">Save Song</button>
+  <!-- fixed button end tag -->
+
+    <div id="save-data">Favorite Song List
+      <ul id ="save-data-list"></ul>
     </div>
-    <div id="save-data">Favorite Song List</div>
 
     <script src="./assets/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
