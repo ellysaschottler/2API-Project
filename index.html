@@ -10,58 +10,75 @@
 </head>
 
 <body>
-  <div>
-    <form id="city-name">
-      <!-- <input id="city" type="text" placeholder="City Name"></input> -->
-      <div class="row">
-        <!-- removed nested form tag and duplicate row tag -->
-            <div class="input-field col s6">
-              <input placeholder="ex. Minneapolis" id="city" type="text">
-              <label for="city">Enter City Name</label>
-            </div>
-      </div>
-      <button id="city-btn" class="green darken-4 waves-light btn">Submit City</button>
-      <!-- fixed end tag to button -->
-        <!-- <button id="city-btn">Search</button> -->
-    </form>
-  </div>
+  <main>
+    <div class="row">
+      <form id="city-name">
+        <!-- <input id="city" type="text" placeholder="City Name"></input> -->
+        <div class="input-field col m9">
+          <input placeholder="ex. Minneapolis" id="city" type="text">
+          <label for="city">Enter City Name</label>
+        </div>
+        <section>
+          <button id="city-btn" class="col m3 green darken-4 waves-light btn">Submit City</a>
+            <!-- <button id="city-btn">Search</button> -->
+        </section>
+      </form>
+    </div>
 
-  <div class="row">
-    <div class="col s12 m6">
-      <div class="card grey darken-1">
-        <div class="card-content white-text">
-          <span id="city-name-display" class="card-title">Local Weather</span>
-          <p id="weather">Enter your location in the input field above to see current weather data!</p>
+
+    <div class="row">
+      <div class="col m6">
+        <div class="card grey darken-2">
+          <div class="card-content white-text">
+            <span id="city-name-display" class="card-title">Local Weather</span>
+            <p id="weather">Enter your location in the input field above to see current weather data!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col m6">
+        <div class="card grey darken-2">
+          <div class="card-content white-text">
+            <span class="card-title">Recommended Song</span>
+            <p>When your location is shared, this card will populate with a song recommendation to fit your
+              area's current weather! Click the 'Now Playing' link to be brought to last.fm! How neat!</p>
+          </div>
+          <div class="card-action">
+            <div id="song"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="row">
-    <div class="col s12 m6">
-      <div class="card grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Recommended Song</span>
-          <p>When your location is shared, this card will populate with a song recommendation to fit your
-            area's current weather! Click the 'Now Playing' link to be brought to last.fm! How neat!</p>
-        </div>
-        <div class="card-action">
-          <div id="song"></div>
-          <!-- changed to div tag instead of a tag -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- <a id="save-btn" class="waves-effect waves-light btn"><i class="material-icons left">cl0oud</i>button</a> -->
-  <button id="save-btn" class="green darken-4 waves-effect waves-light btn">Save Song</button>
-  <!-- fixed button end tag -->
 
-    <div id="save-data">Favorite Song List
-      <ul id ="save-data-list"></ul>
+    <div class="row">
+      <button id="save-btn" class="col m4 offset-m4 green darken-4 waves-effect waves-light btn">Save Song</button>
+      <div id="save-data" class="col m4 offset-m5 white-text">Saved song will appear here!
+        <ul id="save-data-list"></ul>
+      </div>
     </div>
 
     <script src="./assets/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </main>
+
+  <footer class="grey darken-2 page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">API Credits</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://openweathermap.org/">OpenWeather</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://www.last.fm/api">last.fm</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Names?
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>
