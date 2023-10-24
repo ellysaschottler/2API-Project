@@ -1,6 +1,7 @@
 body {
     background-image: url(api_project_background.avif);
     background-size: cover;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .btn {
