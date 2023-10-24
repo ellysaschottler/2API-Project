@@ -13,11 +13,7 @@ N/A
 
 View our website at : https://ellysaschottler.github.io/2API-Project/
 
-A screenshot of our site:
-    
-    ![Screenshot](/assets/website-screenshot.png)
-  
-
+A screenshot of our site: ![Screenshot](./assets/website-screenshot.png)
 ## Credits
 
 Collaborators:<br>
