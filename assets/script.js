@@ -3,7 +3,7 @@ var weatherAPIKey = "af36b85d3236ca25f03ced5a81cc6ee6"
 
 //API 2 https://www.last.fm/api
 var musicAPIKey = "7900466c10eb22d039833bef2573b531"
-
+// various variables
 var trackNameSave
 var trackURLSave
 var savedTrackNames = []
@@ -39,9 +39,9 @@ function getCurrentWeather() {
         return response.json();
     })
         .then(function (data) {
-            var cityNameDataEl = document.createElement("h2")
+            var cityNameDataEl = document.createElement("h4")
             cityNameDataEl.textContent = data.name
-
+        
             var weatherForecastListEl = document.createElement("ul")
             var dateEl = document.createElement("li");
             dateEl.textContent = "Today's Weather:"
@@ -86,7 +86,6 @@ function getCurrentWeather() {
             if (windSpeed > 20) {
                 weatherTermArray.push("wind")
             }
-            console.log(weatherTermArray)
             fetchMusicDataForRandom(weatherTermArray)
         })
 }
@@ -105,14 +104,11 @@ function getRandomWeather() {
     const randomIndex = Math.floor(Math.random() * weatherTermArray.length);
     return weatherTermArray[randomIndex];
 }
-
+// retrieves the music from the API depending on the weather
 function fetchMusicDataForRandom(weatherTermArray) {
     const randomWeatherTerm = getRandomWeather();
     const method = "track.search";
     const track = randomWeatherTerm;
-
-    console.log(weatherTermArray)
-
     const queryURL2 = "http://ws.audioscrobbler.com/2.0/?method=" + method + "&track=" + track + "&api_key=" + musicAPIKey + "&format=json";
 
     fetch(queryURL2, {
@@ -123,7 +119,6 @@ function fetchMusicDataForRandom(weatherTermArray) {
             return response.json();
         })
         .then(function (data) {
-            console.log("Data", data)
             const tracks = data.results.trackmatches.track;
             if (tracks.length > 0) {
                 const randomTrack = getRandomTrack(tracks);
@@ -137,7 +132,7 @@ function fetchMusicDataForRandom(weatherTermArray) {
             }
         })
 
-
+    // Displays the randomly chosen track
     function displayRandomTrack(trackName, trackURL) {
         var trackNameEl = document.createElement("p");
         var trackLink = document.createElement("a");
@@ -149,7 +144,6 @@ function fetchMusicDataForRandom(weatherTermArray) {
         trackNameEl.appendChild(trackLink);
         songContainerEl.innerHTML= "";
         songContainerEl.appendChild(trackNameEl);
-        console.log(trackName + trackURL);
     }
 }
 
@@ -158,7 +152,7 @@ function storeSongInfo (){
     localStorage.setItem("savedTrackNames", JSON.stringify(savedTrackNames));
     localStorage.setItem("savedTrackURLs", JSON.stringify(savedTrackURLs))
 }
-
+// Saves the song
 saveButtonEl.addEventListener("click", function (e){
     e.preventDefault()
     savedTrackNames.push(trackNameSave)
@@ -166,6 +160,7 @@ saveButtonEl.addEventListener("click", function (e){
     storeSongInfo()
     renderSavedTracks()
 })
+// Displays the saved tracks
 function renderSavedTracks(){
     savedSongsContainerEl.innerHTML= ""
     for (var i = 0; i < savedTrackNames.length; i++){
