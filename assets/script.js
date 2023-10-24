@@ -109,7 +109,7 @@ function fetchMusicDataForRandom(weatherTermArray) {
     const randomWeatherTerm = getRandomWeather();
     const method = "track.search";
     const track = randomWeatherTerm;
-    const queryURL2 = "http://ws.audioscrobbler.com/2.0/?method=" + method + "&track=" + track + "&api_key=" + musicAPIKey + "&format=json";
+    const queryURL2 = "https://ws.audioscrobbler.com/2.0/?method=" + method + "&track=" + track + "&api_key=" + musicAPIKey + "&format=json";
 
     fetch(queryURL2, {
         method: "GET",
